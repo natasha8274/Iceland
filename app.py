@@ -5,8 +5,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-USERNAME = 'Anthony'
-PASSWORD = generate_password_hash('061023')
+USERS = {
+    'Anthony': generate_password_hash('061023'),
+    'Natasha' : generate_password_hash('061023'),
+}
 
 @app.route('/')
 def home():
@@ -19,7 +21,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username == USERNAME and check_password_hash(PASSWORD, password):
+        if username in USERS and check_password_hash(USERS[username], password):
             session['username'] = username
             return redirect(url_for('home'))
         return 'Invalid username or password'
@@ -27,9 +29,13 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop('username', None)
+    session.clear()
     return redirect(url_for('login'))
 
+@app.route('/home')
+def home_page():
+    # redirect to home page logic here
+    return "Welcome to the home page!"
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
