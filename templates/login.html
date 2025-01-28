@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Iceland Website</title>
+    <style>
+        .hint-text {
+            color: green;
+            font-style: italic;
+            margin-top: 10px;
+            display: none;
+        }
+        .hint-trigger {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Iceland Website</h1>
+    <h2>Please login to enter the website</h2>
+    <form method="POST">
+        <div>
+            <input type="text" name="username" placeholder="Username" required>
+            <p>
+                <span class="hint-trigger" onclick="toggleHint('username-hint')">Hint</span>
+                <span id="username-hint" class="hint-text">The username is who I love the most</span>
+            </p>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password" required>
+            <p>
+                <span class="hint-trigger" onclick="toggleHint('password-hint')">Hint</span>
+                <span id="password-hint" class="hint-text">The password when all of this become official</span>
+            </p>
+        </div>
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        function toggleHint(hintId) {
+            var hint = document.getElementById(hintId);
+            if (hint.style.display === "none" || hint.style.display === "") {
+                hint.style.display = "inline";
+            } else {
+                hint.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
