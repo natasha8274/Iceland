@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Iceland Website</title>
+    <style>
+        body {
+            background-color:rgba(212, 255, 192, 0.23);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            text-scale-adjust: 100%;
+        }
+        .hint-text {
+            color: green;
+            font-style: italic;
+            margin-top: 10px;
+            display: none;
+        }
+        .hint-trigger {
+            color: green;
+            cursor: pointer;
+            text-decoration: underline;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>The one where she is in Iceland</h1>
+    <h2>To my baby I hope you see how much you mean to me and how much I love you</h2>
+    <h3>Please login to enter the website</h3>
+    <form method="POST">
+        <div>
+            <input type="text" name="username" placeholder="Username" required>
+            <p>
+                <span class="hint-trigger" onclick="toggleHint('username-hint')">Hint</span>
+                <span id="username-hint" class="hint-text">The username is who I love the most</span>
+            </p>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password" required>
+            <p>
+                <span class="hint-trigger" onclick="toggleHint('password-hint')">Hint</span>
+                <span id="password-hint" class="hint-text">The password when all of this become official</span>
+            </p>
+        </div>
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        function toggleHint(hintId) {
+            var hint = document.getElementById(hintId);
+            if (hint.style.display === "none" || hint.style.display === "") {
+                hint.style.display = "inline";
+            } else {
+                hint.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

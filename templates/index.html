@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iceland Test Website</title>
+    <title>Iceland Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color:rgba(237, 183, 229, 0.61);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .logout-link {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(162, 0, 255, 0.27);
+        }
+    </style>
+
+    <script>
+        function displayWelcomeMessage() {
+            var username = "{{ username }}";
+            var message = document.getElementById("welcome-message");
+            message.textContent = "Welcome, " + username + "!";
+
+            setTimeout(function() {
+                window.location.href = "{{ url_for('home_page') }}";
+            }, 1000);
+        }
+
+        window.onload = displayWelcomeMessage;
+    </script>
+
 </head>
 <body>
-    <h1> welcome</h1>
-    <p> This is a test website for Iceland</p>
+    <h1 id ="welcome-message"></h1>
+
+    <div class="logout-link">
+        <a href=" { { url_for('logout') } }">Logout</a>
+    </div>
 </body>
 </html>
