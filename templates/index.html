@@ -25,9 +25,23 @@
         }
     </style>
 
+    <script>
+        function displayWelcomeMessage() {
+            var username = "{{ username }}";
+            var message = document.getElementById("welcome-message");
+            message.textContent = "Welcome, " + username + "!";
+
+            setTimeout(function() {
+                window.location.href = "{{ url_for('home_page') }}";
+            }, 1000);
+        }
+
+        window.onload = displayWelcomeMessage;
+    </script>
+
 </head>
 <body>
-    <h1>Welcome, {{ username }}!</h1>
+    <h1 id ="welcome-message"></h1>
 
     <div class="logout-link">
         <a href=" { { url_for('logout') } }">Logout</a>

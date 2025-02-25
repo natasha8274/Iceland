@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Add CSS styles here */
+        .title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:rgba(85, 106, 79, 0.46);
+            border: 1px solid #228B22;
+            border-bottom: none;
+            color: white;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: #228B22; 
+            color: white;
+        }
+        .tab-content {
+            border: 1px solid #228B22; 
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1 style="display: inline-block; margin: 0;">Title here</h1>
+        <img src="path/to/your/image.jpg" alt="Image" style="width: 100px; height: 100px; vertical-align: middle;">
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="tab1">Tab 1</div>
+        <div class="tab" data-tab="tab2">Tab 2</div>
+        <div class="tab" data-tab="tab3">Outfits</div>
+        <!-- Add more tabs as needed -->
+    </div>
+
+    <div class="tab-content" id="tab1">
+        <!-- Content for Tab 1 -->
+    </div>
+
+    <div class="tab-content" id="tab2" style="display: none;">
+        <!-- Content for Tab 2 -->
+    </div>
+    <!-- Add more tab contents as needed -->
+    <div class="tab-content" id="tab3" style="display: none;">
+        <!-- Content for Outfits tab -->
+    </div>
+    <script>
+        // ...
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const tabId = tab.dataset.tab;
+                tabContents.forEach(content => {
+                    if (content.id === tabId) {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+
+                // Load the content of the clicked tab into the current page
+                if (tabId === 'tab3') {
+                    // Replace the following line with your own code to load the content of the "Outfits" tab
+                    // For example, you can use AJAX or fetch API to load the content from a different page
+                    // You can also use a server-side rendering framework like Next.js or React Server Components
+                    // to load the content dynamically
+                    window.location.href = 'OOTD.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

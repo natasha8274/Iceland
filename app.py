@@ -8,6 +8,8 @@ app.secret_key = os.urandom(24)
 USERS = {
     'Anthony': generate_password_hash('061023'),
     'Natasha' : generate_password_hash('061023'),
+    'anthony': generate_password_hash('061023'),
+    'natasha' : generate_password_hash('061023'),
 }
 
 @app.route('/')
@@ -35,7 +37,7 @@ def logout():
 @app.route('/home')
 def home_page():
     # redirect to home page logic here
-    return "Welcome to the home page!"
+    return render_template('home.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
